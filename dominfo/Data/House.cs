@@ -15,17 +15,19 @@
         public string Flats { get; set; }
         public string Parking { get; set; }
 
+        public string Porch { get; set; }
+
         public string Company { get; set; }
 
 
         public string GetHeaderAllInfo()
         {
-            return "Адрес;Ссылка;Тип дома;Год постройки;Площадь дома;Этажей;Квартир на этаже;Статус;Кол-во квартир;Парковка;Управляющая компания";
+            return "Адрес;Ссылка;Тип дома;Год постройки;Площадь дома;Этажей;Квартир на этаже;Статус;Кол-во квартир;Парковка;Управляющая компания;Подъезд";
         }
 
         public string GetAllInfo()
         {
-            return $"{Address};{Url};{TypeHouse};{Date};{Area};{Floors};{FlatFloor};{Status};{Flats};{Parking};{Company};";
+            return $"{Address};{Url};{TypeHouse};{Date};{Area};{Floors};{FlatFloor};{Status};{Flats};{Parking};{Company};{Porch}";
         }
 
         public override string ToString()

@@ -1,5 +1,7 @@
 ﻿using AngleSharp;
+using AngleSharp.Dom;
 using dominfo.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -61,7 +63,24 @@ namespace dominfo
             h.Parking = div.QuerySelector("div>div:nth-child(8)>div:nth-child(2)").TextContent;
             h.Company = div.QuerySelector("div>div:nth-child(9)>div:nth-child(2)").TextContent;
 
+            h.Porch = GetPorch(document);
+
             return h;
+        }
+
+        private string GetPorch(IDocument document)
+        {
+            IHtmlCollection<IElement> htmlCollections = document.QuerySelectorAll("div.house__charact.house__contentDom>div>div>div>div.house__tableTd");
+
+            for (int i = 0; i < htmlCollections.Length; i++)
+            {
+                if (htmlCollections[i].TextContent.Contains("Количество подъездов:"))
+                {
+                    return htmlCollections[i + 1].TextContent;
+                }
+            }
+
+            return null;
         }
         #endregion PrivateMethod
 

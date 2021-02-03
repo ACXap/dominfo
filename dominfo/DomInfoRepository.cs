@@ -26,22 +26,13 @@ namespace dominfo
         private TokenResponse _tokenResponse;
         #endregion PrivateField
 
-        #region PublicProperties
-        #endregion PublicProperties
-
-        #region PrivateMethod
-        #endregion PrivateMethod
-
-        #region PublicMethod
-        #endregion PublicMethod
-
-
         public string LoadPage(string url)
         {
             HttpWebRequest request = WebRequest.CreateHttp(new Uri(url));
             request.ContentType = CONTENT_TYPE;
             request.UserAgent = _userAgent;
             request.CookieContainer = _cc;
+            request.Timeout = 200000;
 
             request.Headers.Add("Origin", URL_SITE);
             request.Headers.Add("Content-Encoding: gzip, deflate, br");
@@ -73,6 +64,7 @@ namespace dominfo
             request.ContentType = CONTENT_TYPE;
             request.UserAgent = _userAgent;
             request.CookieContainer = _cc;
+            request.Timeout = 200000;
 
             request.Headers.Add("Origin", URL_SITE);
             request.Headers.Add("Accept-Encoding: gzip, deflate, br");
@@ -101,6 +93,7 @@ namespace dominfo
             request.UserAgent = _userAgent;
             request.Referer = urlReferer;
             request.CookieContainer = _cc;
+            request.Timeout = 200000;
 
             request.Headers.Add("Origin", URL_SITE);
             request.Headers.Add("Accept-Encoding: gzip, deflate, br");
