@@ -53,7 +53,7 @@ namespace dominfo
 
             var div = document.QuerySelector("div.house__table");
 
-            h.TypeHouse = div.QuerySelector("div>div:nth-child(1)>div:nth-child(2)").TextContent;
+            h.TypeHouse = div.QuerySelector("div>div:nth-child(1)>div:nth-child(2)").TextContent.Replace(";", " ");
             h.Date = div.QuerySelector("div>div:nth-child(2)>div:nth-child(2)").TextContent;
             h.Area = div.QuerySelector("div>div:nth-child(3)>div:nth-child(2)").TextContent;
             h.Floors = div.QuerySelector("div>div:nth-child(4)>div:nth-child(2)").TextContent;

@@ -20,7 +20,7 @@
         public string Company { get; set; }
 
 
-        public string GetHeaderAllInfo()
+        public static string GetHeaderAllInfo()
         {
             return "Адрес;Ссылка;Тип дома;Год постройки;Площадь дома;Этажей;Квартир на этаже;Статус;Кол-во квартир;Парковка;Управляющая компания;Подъезд";
         }

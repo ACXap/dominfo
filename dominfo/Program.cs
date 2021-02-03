@@ -14,7 +14,7 @@ namespace dominfo
         private static List<ManagementCompany> listManagementCompany;
         private static List<House> listHouse;
         private static List<House> listHouseFullInfo;
-        private static UserAgentRepository userAgents;
+        private static UserAgentRepository userAgents = new UserAgentRepository();
 
         private static List<string> listSity;
 
@@ -34,6 +34,7 @@ namespace dominfo
                 listHouse = new List<House>();
                 listHouseFullInfo = new List<House>();
 
+                Console.WriteLine(nameRegion + " " + urlRegion);
 
                 Console.WriteLine("Получаем все управляющие компании");
                 listManagementCompany = new DomInfoCompanyRepository(userAgents.GetRandomUserAgent()).GetManagementCompanies(urlRegion);
@@ -55,7 +56,8 @@ namespace dominfo
                 {
                     listHouseFullInfo.Add(new DomInfoHouseRepository(userAgents.GetRandomUserAgent()).GetInfoHouse(h));
                 });
-                File.WriteAllLines(fileHouse, listHouseFullInfo.Select(h => h.GetAllInfo()), Encoding.Default);
+                File.WriteAllLines(fileHouse, new string[] { House.GetHeaderAllInfo() }, Encoding.Default);
+                File.AppendAllLines(fileHouse, listHouseFullInfo.Select(h => h.GetAllInfo()), Encoding.Default);
             }
 
             Console.WriteLine("OK");
